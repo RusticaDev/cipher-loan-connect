@@ -57,6 +57,13 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Crypto/Privacy Theme Colors
+        "crypto-purple": "hsl(var(--crypto-purple))",
+        "crypto-blue": "hsl(var(--crypto-blue))",
+        "crypto-green": "hsl(var(--crypto-green))",
+        "crypto-gold": "hsl(var(--crypto-gold))",
+        "encrypted-dark": "hsl(var(--encrypted-dark))",
+        "encrypted-border": "hsl(var(--encrypted-border))",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -80,10 +87,27 @@ export default {
             height: "0",
           },
         },
+        // Crypto/Privacy Animations
+        "encrypt": {
+          "0%": { opacity: "0.3", transform: "scale(0.95)" },
+          "50%": { opacity: "0.8", transform: "scale(1.02)" },
+          "100%": { opacity: "1", transform: "scale(1)" },
+        },
+        "glow": {
+          "0%, 100%": { boxShadow: "0 0 20px hsl(var(--crypto-blue) / 0.2)" },
+          "50%": { boxShadow: "0 0 40px hsl(var(--crypto-purple) / 0.4)" },
+        },
+        "slide-encrypt": {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(0)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "encrypt": "encrypt 0.6s ease-out",
+        "glow": "glow 2s ease-in-out infinite",
+        "slide-encrypt": "slide-encrypt 0.8s ease-out",
       },
     },
   },

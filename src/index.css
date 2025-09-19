@@ -2,41 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* Private Micro-Lending Platform Design System
+All colors MUST be HSL. Privacy-focused crypto theme.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 222 84% 4.9%;
+    --foreground: 210 40% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 217 32.6% 8.5%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 217 32.6% 8.5%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 259 94% 51%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 217 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 142 76% 36%;
+    --accent-foreground: 210 40% 98%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 217 32.6% 17.5%;
+    --input: 217 32.6% 17.5%;
+    --ring: 259 94% 51%;
 
     --radius: 0.5rem;
+
+    /* Privacy & Crypto Theme Extensions */
+    --crypto-purple: 259 94% 51%;
+    --crypto-blue: 217 91% 60%;
+    --crypto-green: 142 76% 36%;
+    --crypto-gold: 43 96% 56%;
+    --encrypted-dark: 217 32.6% 8.5%;
+    --encrypted-border: 217 32.6% 15%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--crypto-purple)), hsl(var(--crypto-blue)));
+    --gradient-encrypted: linear-gradient(90deg, hsl(var(--encrypted-dark)), hsl(var(--card)));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--crypto-green)), hsl(var(--crypto-gold)));
+    
+    /* Shadows & Effects */
+    --shadow-encrypted: 0 10px 30px -10px hsl(var(--crypto-purple) / 0.3);
+    --shadow-glow: 0 0 40px hsl(var(--crypto-blue) / 0.2);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +119,39 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  /* Crypto/Privacy Theme Components */
+  .encrypted-block {
+    @apply relative overflow-hidden rounded-lg border bg-card/50 backdrop-blur-sm;
+    box-shadow: var(--shadow-encrypted);
+    transition: var(--transition-smooth);
+  }
+  
+  .encrypted-block:hover {
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-2px);
+  }
+  
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-encrypted {
+    background: var(--gradient-encrypted);
+  }
+  
+  .gradient-accent {
+    background: var(--gradient-accent);
+  }
+  
+  .crypto-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .encrypted-border {
+    border: 1px solid hsl(var(--encrypted-border));
   }
 }

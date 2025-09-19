@@ -15,6 +15,9 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        // Crypto-themed variants using design system gradients
+        "gradient-primary": "gradient-primary text-white border-0 hover:opacity-90 transition-opacity shadow-lg",
+        "gradient-accent": "gradient-accent text-white border-0 hover:opacity-90 transition-opacity shadow-lg",
       },
       size: {
         default: "h-10 px-4 py-2",
