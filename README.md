@@ -1,73 +1,132 @@
-# Welcome to your Lovable project
+# Cipher Loan Connect
 
-## Project info
+A privacy-first decentralized lending platform built with Fully Homomorphic Encryption (FHE) technology. This platform enables secure, confidential lending and borrowing without compromising user privacy.
 
-**URL**: https://lovable.dev/projects/df9a47f9-8755-460a-9e55-6b97cac617c1
+## Features
 
-## How can I edit this code?
+- **Privacy-First Architecture**: Built with FHE to ensure all sensitive financial data remains encrypted
+- **Decentralized Lending**: Peer-to-peer lending without intermediaries
+- **Smart Contract Integration**: Secure, transparent loan management on blockchain
+- **Multi-Wallet Support**: Connect with various Web3 wallets including Rainbow, MetaMask, and more
+- **Credit Scoring**: Encrypted credit assessment and reputation system
+- **Collateral Management**: Secure collateral verification and management
 
-There are several ways of editing your application.
+## Technology Stack
 
-**Use Lovable**
+- **Frontend**: React, TypeScript, Vite, Tailwind CSS
+- **Web3**: Wagmi, RainbowKit, Viem, Ethers.js
+- **Blockchain**: Ethereum (Sepolia Testnet)
+- **Encryption**: Zama FHE Library
+- **UI Components**: shadcn/ui, Radix UI
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/df9a47f9-8755-460a-9e55-6b97cac617c1) and start prompting.
+## Getting Started
 
-Changes made via Lovable will be committed automatically to this repo.
+### Prerequisites
 
-**Use your preferred IDE**
+- Node.js 18+ and npm
+- Git
+- Web3 wallet (MetaMask, Rainbow, etc.)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Installation
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+1. Clone the repository:
+```bash
+git clone https://github.com/RusticaDev/cipher-loan-connect.git
+cd cipher-loan-connect
+```
 
-Follow these steps:
+2. Install dependencies:
+```bash
+npm install
+```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+3. Set up environment variables:
+```bash
+cp .env.example .env.local
+# Edit .env.local with your configuration
+```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+4. Start the development server:
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Environment Variables
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Create a `.env.local` file with the following variables:
 
-**Use GitHub Codespaces**
+```env
+# Chain Configuration
+NEXT_PUBLIC_CHAIN_ID=11155111
+NEXT_PUBLIC_RPC_URL=https://sepolia.infura.io/v3/YOUR_INFURA_KEY
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+# Wallet Connect Configuration
+NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=your_wallet_connect_project_id
 
-## What technologies are used for this project?
+# Contract Configuration
+NEXT_PUBLIC_CONTRACT_ADDRESS=your_deployed_contract_address
+```
 
-This project is built with:
+## Smart Contract
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+The platform uses a custom smart contract `CipherLoanConnect.sol` that implements:
 
-## How can I deploy this project?
+- Encrypted loan requests and approvals
+- Privacy-preserving payment tracking
+- Credit score management
+- Collateral verification
+- Reputation system
 
-Simply open [Lovable](https://lovable.dev/projects/df9a47f9-8755-460a-9e55-6b97cac617c1) and click on Share -> Publish.
+### Contract Functions
 
-## Can I connect a custom domain to my Lovable project?
+- `requestLoan()`: Create a new loan request
+- `approveLoan()`: Approve a loan request
+- `fundLoan()`: Fund an approved loan
+- `makePayment()`: Make loan payments
+- `completeLoan()`: Mark loan as completed
 
-Yes, you can!
+## Deployment
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Vercel Deployment
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+1. Connect your GitHub repository to Vercel
+2. Set environment variables in Vercel dashboard
+3. Deploy automatically on push to main branch
+
+### Manual Deployment
+
+```bash
+npm run build
+# Deploy the dist/ folder to your hosting provider
+```
+
+## Security Features
+
+- **FHE Encryption**: All sensitive data encrypted using Zama's FHE library
+- **Zero-Knowledge Proofs**: Verify transactions without revealing details
+- **Smart Contract Security**: Audited contracts with proper access controls
+- **Privacy by Design**: No personal data stored in plaintext
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/new-feature`
+3. Commit changes: `git commit -am 'Add new feature'`
+4. Push to branch: `git push origin feature/new-feature`
+5. Submit a pull request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Support
+
+For support and questions, please open an issue on GitHub or contact the development team.
+
+## Roadmap
+
+- [ ] Mobile app development
+- [ ] Additional blockchain support
+- [ ] Advanced FHE features
+- [ ] Integration with DeFi protocols
+- [ ] Cross-chain lending capabilities
