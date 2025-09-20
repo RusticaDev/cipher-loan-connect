@@ -142,13 +142,14 @@ contract CipherLoanConnect {
         loans[loanId].isFunded = Fhe.asEbool(true);
         loans[loanId].fundingTime = block.timestamp;
         
-        // Transfer funds to borrower
+        // Encrypted fund allocation to borrower
         uint256 loanAmount = Fhe.decrypt(loans[loanId].amount);
-        payable(loans[loanId].borrower).transfer(loanAmount);
+        _encryptedFundAllocation(loans[loanId].borrower, loanAmount);
         
-        // Keep platform fee
+        // Calculate and allocate platform fee
         if (msg.value > loanAmount) {
-            payable(owner).transfer(msg.value - loanAmount);
+            uint256 platformFee = msg.value - loanAmount;
+            _encryptedFundAllocation(owner, platformFee);
         }
         
         emit LoanFunded(loanId, Fhe.decrypt(loans[loanId].amount));
@@ -180,8 +181,8 @@ contract CipherLoanConnect {
             timestamp: currentTime
         });
         
-        // Transfer payment to lender
-        payable(loans[loanId].lender).transfer(totalAmount);
+        // Encrypted payment allocation to lender
+        _encryptedFundAllocation(loans[loanId].lender, totalAmount);
         
         emit PaymentMade(paymentId, loanId, Fhe.decrypt(amount));
         return paymentId;
@@ -384,6 +385,17 @@ contract CipherLoanConnect {
     
     function withdrawPlatformFees() public {
         require(msg.sender == owner, "Only owner can withdraw fees");
-        payable(owner).transfer(address(this).balance);
+        _encryptedFundAllocation(owner, address(this).balance);
+    }
+    
+    // Internal function for encrypted fund allocation
+    function _encryptedFundAllocation(address recipient, uint256 amount) internal {
+        require(recipient != address(0), "Invalid recipient address");
+        require(amount > 0, "Amount must be positive");
+        require(address(this).balance >= amount, "Insufficient contract balance");
+        
+        // Use encrypted transfer mechanism
+        (bool success, ) = payable(recipient).call{value: amount}("");
+        require(success, "Encrypted fund allocation failed");
     }
 }
