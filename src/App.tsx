@@ -4,6 +4,10 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
+import StartLending from "./pages/StartLending";
+import BrowseLoans from "./pages/BrowseLoans";
+import LoanDetail from "./pages/LoanDetail";
+import CreateLoan from "./pages/CreateLoan";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -16,6 +20,10 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/start-lending" element={<StartLending />} />
+          <Route path="/browse-loans" element={<BrowseLoans />} />
+          <Route path="/loan/:id" element={<LoanDetail />} />
+          <Route path="/create-loan" element={<CreateLoan />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

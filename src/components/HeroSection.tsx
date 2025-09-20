@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Lock, Users, Coins } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export const HeroSection = () => {
   return (
@@ -26,13 +27,17 @@ export const HeroSection = () => {
           </p>
           
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-            <Button size="lg" className="gradient-primary crypto-glow text-white hover:opacity-90">
-              Start Lending
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-            <Button size="lg" variant="outline" className="border-crypto-blue text-crypto-blue hover:bg-crypto-blue/10">
-              Browse Loans
-            </Button>
+            <Link to="/start-lending">
+              <Button size="lg" className="gradient-primary crypto-glow text-white hover:opacity-90">
+                Start Lending
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+            <Link to="/browse-loans">
+              <Button size="lg" variant="outline" className="border-crypto-blue text-crypto-blue hover:bg-crypto-blue/10">
+                Browse Loans
+              </Button>
+            </Link>
           </div>
           
           <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3">

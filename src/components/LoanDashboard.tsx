@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Lock, Eye, Clock, DollarSign } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface LoanBlock {
   id: string;
@@ -101,22 +102,26 @@ export const LoanDashboard = () => {
                   </div>
                 </div>
                 
-                <Button 
-                  variant="outline" 
-                  className="w-full border-crypto-purple text-crypto-purple hover:bg-crypto-purple/10"
-                >
-                  <Lock className="mr-2 h-4 w-4" />
-                  View Details
-                </Button>
+                <Link to={`/loan/${loan.id}`}>
+                  <Button 
+                    variant="outline" 
+                    className="w-full border-crypto-purple text-crypto-purple hover:bg-crypto-purple/10"
+                  >
+                    <Lock className="mr-2 h-4 w-4" />
+                    View Details
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
           ))}
         </div>
         
         <div className="mt-12 text-center">
-          <Button size="lg" className="gradient-accent text-white hover:opacity-90">
-            Create New Loan
-          </Button>
+          <Link to="/create-loan">
+            <Button size="lg" className="gradient-accent text-white hover:opacity-90">
+              Create New Loan
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
